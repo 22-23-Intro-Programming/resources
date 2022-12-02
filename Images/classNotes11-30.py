@@ -21,8 +21,8 @@ def fixGrayScale(img):
 def main():
 
     win = GraphWin("Image Example", 800, 600)
-
-    win.setBackground('#FF77FF')
+    
+    win.setBackground('#FFBB00')
 
     ball = Image(Point(350,500), "soccerball.png")
     ball.draw(win)
@@ -30,7 +30,11 @@ def main():
     pul = Image(Point(600, 350), "pulisic.png")
     pul.draw(win)
 
-    fixGrayScale(pul)
+    #fixGrayScale(pul)
+
+    win.getMouse()
+
+    ball.move(-150,-100)
 
 
 if __name__ == "__main__":
