@@ -11,9 +11,11 @@ class Square:
         self.r.draw(win)
         self.piece = None
         self.pos = pos
+        self.x = ((pos.getX() - 100)//80)
+        self.y = ((pos.getY() - 100)//80)
 
     def getPos(self):
-        return self.pos
+        return [self.x, self.y]
 
     def hasPiece(self):
         return self.pieceExist
@@ -29,31 +31,19 @@ class Square:
         self.piece = None
         self.pieceExist = False
 
+    def isClicked(self, m):
+        maxX = self.pos.getX() + 80
+        minX = self.pos.getX()
+        maxY = self.pos.getY() + 80
+        minY = self.pos.getY()
 
-def main():
+        if m.getX() < maxX:
+            if m.getX() > minX:
+                if m.getY() < maxY:
+                    if m.getY() > minY:
+                        return True
+        return False
 
-    win = GraphWin("Chess Testing", 1000, 800)
-
-    squares = []    
-    for i in range(8):
-        row = []
-        for j in range(8):
-            row.append(Square(Point(100 + 80*i, 100 + 80*j), win))
-        squares.append(row)
-
-    #print(squares)
-
-    k1 = Piece(Point(220, 220), "knight", win)
-    squares[1][1].addPiece(k1)
-
-    for i in range(8):
-        for j in range(8):
-            print(squares[i][j].getPos())
-            if squares[i][j].hasPiece():
-                print(squares[i][j].getPiece().getName())
-
-if __name__ == "__main__":
-    main()
 
 
 
